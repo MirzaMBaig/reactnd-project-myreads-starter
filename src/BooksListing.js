@@ -4,8 +4,21 @@
 
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import * as BooksAPI from './BooksAPI'
 
 class BooksListing extends Component {
+
+    state = {
+        books:[]
+    }
+
+    componentDidMount(){
+        BooksAPI.getAll().then((books) => {this.setState({
+            books
+        })
+        console.log(books);
+        })
+    }
 
     render() {
         return <div className="list-books">
@@ -18,13 +31,17 @@ class BooksListing extends Component {
                         <h2 className="bookshelf-title">Currently Reading</h2>
                         <div className="bookshelf-books">
                             <ol className="books-grid">
+                                {JSON.stringify(this.state.books[0])} //works fine
+                                    {JSON.stringify(this.state.books[0].title)} // doesnt work . why??
+
+
                                 <li>
                                     <div className="book">
                                         <div className="book-top">
                                             <div className="book-cover" style={{
                                                 width: 128,
                                                 height: 193,
-                                                backgroundImage: 'url("http://books.google.com/books/content?id=PGR2AwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73-GnPVEyb7MOCxDzOYF1PTQRuf6nCss9LMNOSWBpxBrz8Pm2_mFtWMMg_Y1dx92HT7cUoQBeSWjs3oEztBVhUeDFQX6-tWlWz1-feexS0mlJPjotcwFqAg6hBYDXuK_bkyHD-y&source=gbs_api")'
+                                                backgroundImage: `url(this.state.books[0].imageLinks.thumbnail)`
                                             }}></div>
                                             <div className="book-shelf-changer">
                                                 <select>
@@ -36,8 +53,8 @@ class BooksListing extends Component {
                                                 </select>
                                             </div>
                                         </div>
-                                        <div className="book-title">To Kill a Mockingbird</div>
-                                        <div className="book-authors">Harper Lee</div>
+                                        <div className="book-title"></div>
+                                        <div className="book-authors"></div>
                                     </div>
                                 </li>
                                 <li>
