@@ -21,6 +21,11 @@ class BooksListing extends Component {
         })
     }
 
+    updateBookShelf = (book, shelf) => {
+        console.log(book);
+        console.log(shelf);
+    }
+
     render() {
         return <div className="list-books">
             <div className="list-books-title">
@@ -32,7 +37,7 @@ class BooksListing extends Component {
                         <h2 className="bookshelf-title">Currently Reading</h2>
                         <div className="bookshelf-books">
                             <ol className="books-grid">
-                                {this.state.books.map( book  => book.shelf === 'currentlyReading' && <BookComponent book={book}/> )}
+                                {this.state.books.map( book  => book.shelf === 'currentlyReading' && <BookComponent book={book} updateBookShelf={(book, shelf) => this.updateBookShelf(book, shelf)}/> )}
                             </ol>
                         </div>
                     </div>

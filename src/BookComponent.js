@@ -18,12 +18,12 @@ class BookComponent extends Component{
                         backgroundImage: `url(${book.imageLinks.thumbnail})`
                     }}></div>
                     <div className="book-shelf-changer">
-                        <select value={this.state.value} onChange={this.handleChange}>
+                        <select value={book.shelf} onChange={(event)=>this.props.updateBookShelf(book, event)}>
                             <option value="none" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>
                             <option value="read">Read</option>
-                            <option value="none">None</option>
+                            <option value="none" disabled>None</option>
                         </select>
                     </div>
                 </div>
