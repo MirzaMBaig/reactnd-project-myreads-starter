@@ -24,6 +24,11 @@ class BooksListing extends Component {
     updateBookShelf = (book, shelf) => {
         console.log(book);
         console.log(shelf);
+        book.shelf = shelf;
+
+        this.setState(prevState => {
+            prevState.books.map(pbook => pbook.id === book.id);//dont know what is happening here but the code works
+        })
     }
 
     render() {
@@ -45,7 +50,7 @@ class BooksListing extends Component {
                         <h2 className="bookshelf-title">Want to Read</h2>
                         <div className="bookshelf-books">
                             <ol className="books-grid">
-                                {this.state.books.map( book  => book.shelf === 'wantToRead' && <BookComponent book={book}/> )}
+                                {this.state.books.map( book  => book.shelf === 'wantToRead' && <BookComponent book={book} updateBookShelf={(book, shelf) => this.updateBookShelf(book, shelf)}/> )}
                             </ol>
                         </div>
                     </div>
@@ -53,7 +58,7 @@ class BooksListing extends Component {
                         <h2 className="bookshelf-title">Read</h2>
                         <div className="bookshelf-books">
                             <ol className="books-grid">
-                                {this.state.books.map( book  => book.shelf === 'read' && <BookComponent book={book}/> )}
+                                {this.state.books.map( book  => book.shelf === 'read' && <BookComponent book={book} updateBookShelf={(book, shelf) => this.updateBookShelf(book, shelf)}/> )}
                             </ol>
                         </div>
                     </div>
