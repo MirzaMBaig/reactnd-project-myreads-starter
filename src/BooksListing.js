@@ -17,13 +17,18 @@ class BooksListing extends Component {
         BooksAPI.getAll().then((books) => {this.setState({
             books
         })
-        console.log(books);
+        })
+    }
+
+    addBooks = (selectedBooks) => {
+        console.log(selectedBooks);
+        this.setState(preState => {
+            preState.books.concat(selectedBooks);
         })
     }
 
     updateBookShelf = (book, shelf) => {
         book.shelf = shelf;
-
         this.setState(prevState => {
             prevState.books.map(pbook => pbook.id === book.id);//dont know what is happening here but the code works
         })

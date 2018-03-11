@@ -17,7 +17,7 @@ class BookComponent extends Component{
                         backgroundImage: `url(${book.imageLinks.thumbnail})`
                     }}></div>
                     <div className="book-shelf-changer">
-                        <select value={book.shelf} onChange={(event)=>this.props.updateBookShelf(book, event.target.value)}>
+                        <select value={book.shelf} onChange={(event)=> this.props.updateBookShelf && this.props.updateBookShelf(book, event.target.value)}>
                             <option value="none" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>
@@ -27,7 +27,7 @@ class BookComponent extends Component{
                     </div>
                 </div>
                 <div className="book-title">{book.title}</div>
-                <div className="book-authors">{book.authors.map(author => <span key={author}>{author}</span> )}</div>
+                <div className="book-authors">{book.authors && book.authors.map(author => <span key={author}>{author}</span> )}</div>
             </div>
         </li>
     }

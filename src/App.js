@@ -5,11 +5,7 @@ import { Route, Link  }from 'react-router-dom';
 import SearchBook from "./SearchBook";
 import BooksListing from "./BooksListing";
 
-
 class BooksApp extends React.Component {
-
-  state = {
-  }
 
   render() {
     return (
