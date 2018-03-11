@@ -22,8 +22,6 @@ class BooksListing extends Component {
     }
 
     updateBookShelf = (book, shelf) => {
-        console.log(book);
-        console.log(shelf);
         book.shelf = shelf;
 
         this.setState(prevState => {
