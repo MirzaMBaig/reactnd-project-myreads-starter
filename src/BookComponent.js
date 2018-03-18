@@ -8,7 +8,7 @@ class BookComponent extends Component{
 
     render(){
         let book = this.props.book;
-        return  <li key={book.id}>
+        return  <li>
             <div className="book">
                 <div className="book-top">
                     <div className="book-cover" style={{

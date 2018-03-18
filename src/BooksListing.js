@@ -21,7 +21,7 @@ class BooksListing extends Component {
                         <h2 className="bookshelf-title">Currently Reading</h2>
                         <div className="bookshelf-books">
                             <ol className="books-grid">
-                                {books && (books.map( book  => book.shelf === 'currentlyReading' && <BookComponent book={book} updateBookShelf={(book, shelf) => updateBookShelf(book, shelf)}/> ))}
+                                {books && (books.map( book  => book.shelf === 'currentlyReading' && <BookComponent key={book.id} book={book} updateBookShelf={(book, shelf) => updateBookShelf(book, shelf)}/> ))}
                             </ol>
                         </div>
                     </div>
@@ -29,7 +29,7 @@ class BooksListing extends Component {
                         <h2 className="bookshelf-title">Want to Read</h2>
                         <div className="bookshelf-books">
                             <ol className="books-grid">
-                                {books && (books.map( book  => book.shelf === 'wantToRead' && <BookComponent book={book} updateBookShelf={(book, shelf) => updateBookShelf(book, shelf)}/> ))}
+                                {books && (books.map( book  => book.shelf === 'wantToRead' && <BookComponent key={book.id} book={book} updateBookShelf={(book, shelf) => updateBookShelf(book, shelf)}/> ))}
                             </ol>
                         </div>
                     </div>
@@ -37,7 +37,7 @@ class BooksListing extends Component {
                         <h2 className="bookshelf-title">Read</h2>
                         <div className="bookshelf-books">
                             <ol className="books-grid">
-                                {books && (books.map( book  => book.shelf === 'read' && <BookComponent book={book} updateBookShelf={(book, shelf) => updateBookShelf(book, shelf)}/> ))}
+                                {books && (books.map( book  => book.shelf === 'read' && <BookComponent key={book.id} book={book} updateBookShelf={(book, shelf) => updateBookShelf(book, shelf)}/> ))}
                             </ol>
                         </div>
                     </div>
