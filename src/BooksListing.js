@@ -2,14 +2,16 @@
  * Created by mmab on 04/03/2018.
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import BookComponent from "./BookComponent"
+import * as BooksAPI from './BooksAPI'
 
 export default function BooksListing(props) {
 
     let books = props.books && props.books;
     let updateBookShelf = props.updateBookShelf && props.updateBookShelf;
+    
     return <div className="list-books">
         <div className="list-books-title">
             <h1>MyReads</h1>
