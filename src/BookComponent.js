@@ -5,6 +5,7 @@
 import React from "react";
 
 export default function BookComponent(props) {
+
     let book = props.book;
     return <li>
         <div className="book">
@@ -12,7 +13,7 @@ export default function BookComponent(props) {
                 <div className="book-cover" style={{
                     width: 128,
                     height: 193,
-                    backgroundImage: `url(${book.imageLinks.thumbnail})`
+                    backgroundImage: `url(${book.imageLinks.thumbnail}), url(${'/image/BookNotPictured.png'})`
                 }}></div>
                 <div className="book-shelf-changer">
                     <select value={book.shelf ? book.shelf : 'none'} onChange={(event) => props.updateBookShelf && props.updateBookShelf(book, event.target.value)}>
