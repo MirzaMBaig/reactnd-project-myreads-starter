@@ -7,13 +7,14 @@ import React from "react";
 export default function BookComponent(props) {
 
     let book = props.book;
+    let backgroundImageProp = book.imageLinks ? book.imageLinks.thumbnail :'/image/BookNotPictured.png';
     return <li>
         <div className="book">
             <div className="book-top">
                 <div className="book-cover" style={{
                     width: 128,
                     height: 193,
-                    backgroundImage: `url(${book.imageLinks.thumbnail}), url(${'/image/BookNotPictured.png'})`
+                    backgroundImage: `url(${backgroundImageProp})`
                 }}></div>
                 <div className="book-shelf-changer">
                     <select value={book.shelf ? book.shelf : 'none'} onChange={(event) => props.updateBookShelf && props.updateBookShelf(book, event.target.value)}>

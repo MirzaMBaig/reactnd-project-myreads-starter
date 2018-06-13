@@ -10,41 +10,22 @@ class BooksApp extends React.Component {
 
     state = {
         books: [],
-        searchedBooks: []
+        searchedBooks: [] 
     }
 
     componentDidMount() {
-        BooksAPI.getAll().then((books) => {
-            this.setState({ books })
-        }
-        )
+        this.getAll();
     }
 
-    search = (query) => {
-        BooksAPI.search(query)
-            .then(books => {
-                console.log(query)
-                let booksSearched = [];
-                if (!books.error){
-                    booksSearched = books
-                }
-                this.setState({
-                    searchedBooks: booksSearched
-                })
-            })
+    getAll() {
+        BooksAPI.getAll().then((books) => {
+            this.setState({ books })
+        })
     }
 
     updateBookShelf = (book, shelf) => {
         book.shelf = shelf;
-        BooksAPI.update(book, shelf).then(updatedBooks => {
-            
-            this.setState((prevState) => {
-                let removeExistingBook = prevState.books.filter(prevBook => prevBook.id !== book.id)
-                let updatedBooks = [];
-                updatedBooks.push(book);
-                books: updatedBooks.push(removeExistingBook)
-            })
-        })
+        BooksAPI.update(book, shelf).then(updatedBooks => this.getAll())
     }
 
     render() {
@@ -52,9 +33,8 @@ class BooksApp extends React.Component {
             <div className="app">
                 <Switch>
                     <Route path="/search" forceUpdate
-                        render={(props) => (<SearchBook searchedBooks={this.state.searchedBooks}
-                            updateBookShelf={(book, shelf) => this.updateBookShelf(book, shelf)}
-                            search={(query) => this.search(query)} />)} />
+                        render={(props) => (<SearchBook books={this.state.books}
+                            updateBookShelf={(book, shelf) => this.updateBookShelf(book, shelf)} />)} />
 
                     <Route exact path="/" render={(props) => (
                         <BooksListing updateBookShelf={(book, shelf) => this.updateBookShelf(book, shelf)}
