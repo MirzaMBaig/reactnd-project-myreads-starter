@@ -7,7 +7,7 @@ import React from "react";
 export default function BookComponent(props) {
 
     let book = props.book;
-    let backgroundImageProp = book.imageLinks ? book.imageLinks.thumbnail :'/image/BookNotPictured.png';
+    let backgroundImageProp = book.imageLinks ? book.imageLinks.thumbnail : '/image/BookNotPictured.png';
     return <li>
         <div className="book">
             <div className="book-top">

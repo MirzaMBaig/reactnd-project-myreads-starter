@@ -11,7 +11,7 @@ export default function BooksListing(props) {
 
     let books = props.books && props.books;
     let updateBookShelf = props.updateBookShelf && props.updateBookShelf;
-    
+
     return <div className="list-books">
         <div className="list-books-title">
             <h1>MyReads</h1>

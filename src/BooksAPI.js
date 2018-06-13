@@ -40,7 +40,7 @@ export const search = (query) =>
       ...headers,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ query, maxResults:20 })
+    body: JSON.stringify({ query, maxResults: 20 })
   }).then(res => res.json())
     .then(data => data.books)
     .catch(err => { books: { err.error } })
